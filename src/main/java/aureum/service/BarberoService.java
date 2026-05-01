@@ -33,6 +33,11 @@ public class BarberoService {
                 dto.id = b.id;
                 dto.nombre = b.usuario.nombre;
                 dto.telefono = b.usuario.telefono;
+                dto.diasLaborales = b.horarios.stream()
+                    .map(h -> h.diaSemana)
+                    .distinct()
+                    .sorted()
+                    .collect(Collectors.toList());
                 return dto;
             })
             .collect(Collectors.toList());

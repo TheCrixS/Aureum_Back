@@ -2,6 +2,8 @@ package aureum.resource;
 
 import aureum.dto.BarberoDisponibleDTO;
 import aureum.dto.HorarioDisponibleDTO;
+import aureum.entity.Barbero;
+import aureum.repository.BarberoRepository;
 import aureum.service.BarberoService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -16,6 +18,7 @@ import java.util.List;
 public class BarberoResource {
 
     @Inject BarberoService barberoService;
+    @Inject BarberoRepository barberoRepository;
 
     @GET
     @Path("/disponibles")
@@ -26,6 +29,21 @@ public class BarberoResource {
         List<BarberoDisponibleDTO> lista =
             barberoService.findDisponibles(fecha, servicioId);
         return Response.ok(lista).build();
+    }
+
+    @GET
+    @Path("/{barberoId}/dias-laborales")
+    public Response getDiasLaborales(@PathParam("barberoId") Long barberoId) {
+        Barbero barbero = barberoRepository.findById(barberoId);
+        if (barbero == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        List<Integer> dias = barbero.horarios.stream()
+            .map(h -> h.diaSemana)
+            .distinct()
+            .sorted()
+            .collect(java.util.stream.Collectors.toList());
+        return Response.ok(dias).build();
     }
 
     @GET
