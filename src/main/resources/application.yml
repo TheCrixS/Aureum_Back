@@ -1,0 +1,50 @@
+quarkus:
+  application:
+    name: Aureum
+    version: 1.0-SNAPSHOT
+
+  # HTTP
+  http:
+    port: 8899
+    host: localhost
+    root-path: api
+    cors:
+      enabled: true
+      origins: "*"
+      methods: GET,POST,PUT,DELETE,OPTIONS
+      headers: Content-Type,Authorization,X-Requested-With
+
+
+  # Base de datos
+  datasource:
+    db-kind: postgresql
+    username: app_barberia_instancia_user
+    password: lPsGWNtXkXdT9BFyZjXMf354qQKpcXXP
+    jdbc:
+      url: "jdbc:postgresql://dpg-d7snkebbc2fs73cu0lv0-a.oregon-postgres.render.com:5432/app_barberia_instancia?sslmode=require"
+
+  # Hibernate-hibernate-orm:
+  hibernate-orm:
+    schema-management:
+      strategy:
+        drop-and-create
+    log:
+      sql: true
+
+
+  # Configuracion de Logs
+  log:
+    level: INFO
+    console:
+      enabled: true
+      format: "%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p [%c{3.}] (%t) %s%e%n"
+      dark-launch: true
+
+    file:
+      enabled: true
+      path: logs/barbero.log
+      format: "%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p [%c{3.}] (%t) %s%e%n"
+      rotation:
+        max-file-size: 5M # Tamaño máximo
+        max-backup-index: 5 # Archivos conservados
+        file-suffix: yyyy-MM-dd #Sufijo de retación

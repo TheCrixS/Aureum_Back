@@ -1,0 +1,6 @@
+2026-05-05 02:27:05,169 WARN  [io.qua.config] (Quarkus Main Thread) Unrecognized configuration key "quarkus.http.cors" was provided; it will be ignored; verify that the dependency extension for this configuration is set or that you did not make a typo
+2026-05-05 02:27:05,169 WARN  [io.qua.config] (Quarkus Main Thread) Unrecognized configuration key "quarkus.log.console.dark-launch" was provided; it will be ignored; verify that the dependency extension for this configuration is set or that you did not make a typo
+2026-05-05 02:27:05,205 WARN  [io.qua.config] (Quarkus Main Thread) The "quarkus.hibernate-orm.database.generation" config property is deprecated and should not be used anymore.
+2026-05-05 02:27:09,183 INFO  [io.quarkus] (Quarkus Main Thread) Aureum 1.0-SNAPSHOT on JVM (powered by Quarkus 3.34.3) started in 7.723s. Listening on: http://localhost:8899
+2026-05-05 02:27:09,184 INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
+2026-05-05 02:27:09,184 INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [agroal, cdi, compose, config-yaml, hibernate-orm, hibernate-orm-panache, hibernate-validator, jdbc-postgresql, narayana-jta, rest, rest-jackson, smallrye-context-propagation, smallrye-openapi, swagger-ui, vertx]
