@@ -10,8 +10,10 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
-@Path("/crearBarbero")
+@Path("/barbero")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class BarberoResource {
@@ -19,8 +21,8 @@ public class BarberoResource {
     @Inject
     BarberoService  barberoService;
 
-    @POST
-    public Response createBarbero(BarberoDto  barberoDto) {
+    @POST()
+    public Response crearBarbero(BarberoDto  barberoDto) {
         Barbero barbero = Barbero
                 .builder()
                 .nombres(barberoDto.nombres())
