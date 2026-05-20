@@ -2,6 +2,7 @@ package aureum.infraestructura.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public record BarberoDto(
         @NotBlank(message = "El nombre es requerido")
@@ -15,8 +16,8 @@ public record BarberoDto(
         @Email(message = "El formato del correo es incorrecto")
         @NotBlank(message = "El email es requerido")
         String email,
-        @NotBlank(message = "El telefono es requerido")
-        int telefono,
+        @NotNull(message = "El telefono es requerido")
+        Long telefono,
         @NotBlank(message = "El estado es requerido")
         Boolean estado
 ) {

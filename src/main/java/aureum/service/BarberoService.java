@@ -2,13 +2,13 @@ package aureum.service;
 
 import aureum.dto.BarberoDisponibleDTO;
 import aureum.dto.HorarioDisponibleDTO;
+import aureum.entidades.ServicioBarberia;
 import aureum.entity.Barbero;
 import aureum.entity.Cita;
 import aureum.entity.HorarioLaboral;
-import aureum.entity.Servicio;
 import aureum.repository.BarberoRepository;
 import aureum.repository.CitaRepository;
-import aureum.repository.ServicioRepository;
+import aureum.repositorios.ServicioBarberiaRepositorio;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import java.time.LocalDate;
@@ -23,7 +23,7 @@ public class BarberoService {
 
     @Inject BarberoRepository barberoRepository;
     @Inject CitaRepository citaRepository;
-    @Inject ServicioRepository servicioRepository;
+    @Inject ServicioBarberiaRepositorio servicioBarberiaRepositorio;
 
     public List<BarberoDisponibleDTO> findDisponibles(LocalDate fecha, Long servicioId) {
         return barberoRepository.findDisponiblesPorFecha(fecha)
@@ -47,7 +47,7 @@ public class BarberoService {
             Long barberoId, LocalDate fecha, Long servicioId) {
 
         Barbero barbero = barberoRepository.findById(barberoId);
-        Servicio servicio = servicioRepository.findById(servicioId);
+        ServicioBarberia servicio = servicioBarberiaRepositorio.findById(servicioId);
         if (barbero == null || servicio == null) return List.of();
 
         int diaSemana = fecha.getDayOfWeek().getValue();
@@ -57,7 +57,7 @@ public class BarberoService {
         if (horario == null) return List.of();
 
         List<Cita> citasDelDia = citaRepository.findPorBarberoYFecha(barberoId, fecha);
-        int duracion = servicio.duracionMinutos;
+        int duracion = servicio.getDuracionMinutos();
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("HH:mm");
         List<HorarioDisponibleDTO> disponibles = new ArrayList<>();
 

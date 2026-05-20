@@ -17,7 +17,7 @@ public class BarberoEntity extends PanacheEntity {
     public String apellidos;
     public String tipoIdentificacion;
     public Long identificacion;
-    public int telefono;
+    public Long telefono;
     public String email;
     public String especialidad;
     public Boolean estado;

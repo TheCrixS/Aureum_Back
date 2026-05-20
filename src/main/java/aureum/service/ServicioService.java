@@ -1,8 +1,8 @@
 package aureum.service;
 
 import aureum.dto.ServicioDTO;
-import aureum.entity.Servicio;
-import aureum.repository.ServicioRepository;
+import aureum.entidades.ServicioBarberia;
+import aureum.repositorios.ServicioBarberiaRepositorio;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import java.util.List;
@@ -12,22 +12,22 @@ import java.util.stream.Collectors;
 public class ServicioService {
 
     @Inject
-    ServicioRepository servicioRepository;
+    ServicioBarberiaRepositorio servicioBarberiaRepositorio;
 
     public List<ServicioDTO> listarActivos() {
-        return servicioRepository.findActivos()
+        return servicioBarberiaRepositorio.listAll()
             .stream()
             .map(this::toDTO)
             .collect(Collectors.toList());
     }
 
-    private ServicioDTO toDTO(Servicio s) {
+    private ServicioDTO toDTO(ServicioBarberia s) {
         ServicioDTO dto = new ServicioDTO();
-        dto.id = s.id;
-        dto.nombre = s.nombre;
-        dto.descripcion = s.descripcion;
-        dto.duracionMinutos = s.duracionMinutos;
-        dto.precioBase = s.precioBase;
+        dto.id = s.getId();
+        dto.nombre = s.getNombre();
+        dto.descripcion = s.getDescripcion();
+        dto.duracionMinutos = s.getDuracionMinutos();
+        dto.precioBase = s.getPrecio();
         return dto;
     }
 }

@@ -7,11 +7,14 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.jboss.logging.Logger;
 
 @Path("/api/citas")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class CitaResource {
+
+    private static final Logger LOG = Logger.getLogger(CitaResource.class);
 
     @Inject CitaService citaService;
 
@@ -27,6 +30,7 @@ public class CitaResource {
             return Response.status(Response.Status.CONFLICT)
                 .entity("{\"error\": \"" + e.getMessage() + "\"}").build();
         } catch (Exception e) {
+            LOG.error("Error al crear la cita", e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                 .entity("{\"error\": \"Ha ocurrido un error al agendar tu cita. Intenta nuevamente.\"}").build();
         }

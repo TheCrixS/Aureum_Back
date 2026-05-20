@@ -1,5 +1,6 @@
 package aureum.entity;
 
+import aureum.entidades.ServicioBarberia;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.*;
 import java.time.LocalDate;
@@ -19,7 +20,7 @@ public class Cita extends PanacheEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "servicio_id", nullable = false)
-    public Servicio servicio;
+    public ServicioBarberia servicio;
 
     @Column(nullable = false)
     public LocalDate fecha;
