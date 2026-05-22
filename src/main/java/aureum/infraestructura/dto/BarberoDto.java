@@ -12,12 +12,12 @@ public record BarberoDto(
         @NotBlank(message = "El tipo es requerido")
         String tipoIdentificacion,
         @NotBlank(message = "La identificacion es requerida")
-        Long identificacion,
+        String identificacion,
         @Email(message = "El formato del correo es incorrecto")
         @NotBlank(message = "El email es requerido")
         String email,
         @NotNull(message = "El telefono es requerido")
-        Long telefono,
+        String telefono,
         @NotBlank(message = "El estado es requerido")
         Boolean estado
 ) {
