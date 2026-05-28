@@ -3,13 +3,10 @@ FROM maven:3.9.12-eclipse-temurin-25 AS build
 WORKDIR /app
 
 COPY pom.xml .
-COPY mvnw .
-COPY .mvn .mvn
-RUN chmod +x mvnw
-RUN ./mvnw -B dependency:go-offline
+RUN mvn -B dependency:go-offline
 
 COPY src src
-RUN ./mvnw -B package -DskipTests
+RUN mvn -B package -DskipTests
 
 FROM eclipse-temurin:25-jre
 
