@@ -1,4 +1,0 @@
-2026-05-21 20:52:39,632 WARN  [io.qua.config] (Quarkus Main Thread) Unrecognized configuration key "quarkus.log.console.dark-launch" was provided; it will be ignored; verify that the dependency extension for this configuration is set or that you did not make a typo
-2026-05-21 20:52:48,118 INFO  [io.quarkus] (Quarkus Main Thread) Aureum 1.0-SNAPSHOT on JVM (powered by Quarkus 3.34.3) started in 19.306s. Listening on: http://localhost:8899
-2026-05-21 20:52:48,122 INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
-2026-05-21 20:52:48,123 INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [agroal, cdi, compose, hibernate-orm, hibernate-orm-panache, hibernate-validator, jdbc-postgresql, narayana-jta, rest, rest-jackson, smallrye-context-propagation, smallrye-openapi, swagger-ui, vertx]
